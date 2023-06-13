@@ -1,6 +1,7 @@
 # from enum import Enum
 # from typing import Optional
-from pydantic import BaseModel, Field
+import re
+from pydantic import BaseModel, Field, HttpUrl
 
 from fastapi import FastAPI, Query, Path, Body
 
@@ -206,3 +207,54 @@ app = FastAPI()
 # async def update_item(item_id: int, item: Item = Body(..., embed=True)):
 #     results = {'item_id': item_id, 'item': item}
 #     return results
+
+# Part 9 -> Body - NEsted Models
+URL_REGEX = re.compile(
+    r'^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)$'
+)
+
+
+class Image(BaseModel):
+    # url: str = Field(
+    #     ...,
+    #     regex=URL_REGEX
+    # )
+    url: HttpUrl
+    name: str
+
+
+class Item(BaseModel):
+    name: str
+    description: str | None = None
+    price: float
+    tax: float | None = None
+    tags: set[str] = []
+    image: list[Image] | None = None
+
+
+class Offer(BaseModel):
+    name: str
+    description: str | None = None
+    price: float
+    items: list[Item]
+
+
+@app.put("/items/{item_id}")
+async def update_item(item_id: int, item: Item):
+    results = {"item_id": item_id, "item": item}
+    return results
+
+
+@app.post("/offers")
+async def create_offer(offer: Offer = Body(..., embed=True)):
+    return offer
+
+
+@app.post("/images/multiple")
+async def create_multiple_images(images: list[Image]):
+    return images
+
+
+@app.post("/blah")
+async def create_some_blahs(blahs: dict[int, float]):
+    return blahs
