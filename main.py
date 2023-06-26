@@ -1093,3 +1093,5 @@ app.add_middleware(CORSMiddleware, allow_origins=origins)
 @app.get('/blah')
 async def blah():
     return {"hello": "world"}
+
+#Part 29 -> SQL Relational Databases
