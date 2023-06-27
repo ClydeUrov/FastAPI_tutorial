@@ -20,14 +20,14 @@
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="025bb412-5981-456d-bb64-c01480c8e2d7" object-ref="schemas/sql_app/tables/items" />
-      <object connection-id="025bb412-5981-456d-bb64-c01480c8e2d7" object-ref="schemas/sql_app/tables/users" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="025bb412-5981-456d-bb64-c01480c8e2d7" dataset="sql_app.items" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="025bb412-5981-456d-bb64-c01480c8e2d7" dataset="sql_app.users" active-filter-id="EMPTY_FILTER" />
+  </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
