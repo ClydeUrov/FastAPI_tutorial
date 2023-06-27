@@ -1,0 +1,27 @@
+notification for example@example.com: some notification
+notification for example_2@example.com: some notification
+found query: 1
+message to blah1@example.com
+found query: hello world
+message to blah1@example.com
+found query: hello world
+message to blah1@example.com
+found query: hello world
+message to blah1@example.com
+found query: hello world
+message to blah1@example.com
+found query: hello world
+message to blah1@example.com
+message to blah1@example.com
+found query: hello friends
+found query: hello friends
+found query: hello friends
+found query: hello friends
+found query: hello friends
+found query: hello friends
+message to blah2@example.com
+message to blah2@example.com
+message to blah2@example.com
+message to blah2@example.com
+message to blah2@example.com
+message to blah2@example.com
