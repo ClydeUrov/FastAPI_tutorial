@@ -25,6 +25,7 @@ from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
+
 # @app.get('/', description="This is our first route.")
 # async def base_get_route():
 #     return {'message': "Hello world"}
@@ -1185,39 +1186,125 @@ app = FastAPI()
 #     return [dict(name="wand"), dict(name="flying broom")]
 
 # Part 33 -> Static Files, Testing and Debugging
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# app.mount("/static", StaticFiles(directory="static"), name="static")
+#
+# fake_secret_token = "coneofsilence"
+# fake_db = dict(
+#     foo=dict(
+#         id="foo", title="Foo", description="There goes my hero"
+#     ),
+#     bar=dict(
+#         id="bar", title="Bar", description="The bartenders"
+#     )
+# )
+#
+#
+# class Item(BaseModel):
+#     id: str
+#     title: str
+#     description: str | None = None
+#
+#
+# @app.get("/items/{item_id}")
+# async def read_main(item_id: str, x_token: str = Header(...)):
+#     if x_token != fake_secret_token:
+#         raise HTTPException(status_code=400, detail="Invalid X-Token header")
+#     if item_id not in fake_db:
+#         raise HTTPException(status_code=404, detail="Item not found")
+#     return fake_db[item_id]
+#
+#
+# @app.post("/items/", response_model=Item)
+# async def create_item(item: Item, x_token: str = Header(...)):
+#     if x_token != fake_secret_token:
+#         raise HTTPException(status_code=400, detail="Invalid X-Token header")
+#     if item.id in fake_db:
+#         raise HTTPException(status_code=400, detail="Item already exists")
+#     fake_db[item.id] = item
+#     return item
 
-fake_secret_token = "coneofsilence"
-fake_db = dict(
-    foo=dict(
-        id="foo", title="Foo", description="There goes my hero"
-    ),
-    bar=dict(
-        id="bar", title="Bar", description="The bartenders"
-    )
-)
+# class Build:
+#     __year = None
+#     __city = None
+#
+#     def __init__(self, year, city):
+#         self.year = year
+#         self.city = city
+#
+#     def get_info(self):
+#         print(f"The build was building in {self.year} in {self.city}")
+#
+#
+# class School(Build):
+#     __pupils = None
+#
+#     def __init__(self, year, city, pupils=500):
+#         super(School, self).__init__(year, city)
+#         self.pupils = pupils
+#
+#     def get_info(self):
+#         super().get_info()
+#         print(f"In School::: Pupils: {self.pupils}, Years: {self.year}, Cities: {self.city}\n")
+#
+#
+# class House(Build):
+#     pass
+#
+#
+# class Shop(Build):
+#     pass
+#
+#
+# school = School(1990, "Seattle", 700)
+# school.pupils = 300
+# school.get_info()
+#
+# house = Build(2010, "New York")
+# house.get_info()
+#
+# shop = Build(2000, "Miami")
+#
+#
+# class Some:
+#     def __printwords(self):
+#         print("Спробуй мене викликати")
+#
+#
+# obj = Some()
+# obj.printwords()  # Виклик функції нічого не дасть
 
+# import webbrowser
+#
+#
+# def validator(func):
+#     def wrapper(url):
+#         print("Call is before")
+#         func(url)
+#         print("Print in after function")
+#     return wrapper
+#
+#
+# @validator
+# def open_url(url):
+#     webbrowser.open(url)
+#
+#
+# open_url('https://itproger.com/ua')
 
-class Item(BaseModel):
-    id: str
-    title: str
-    description: str | None = None
-
-
-@app.get("/items/{item_id}")
-async def read_main(item_id: str, x_token: str = Header(...)):
-    if x_token != fake_secret_token:
-        raise HTTPException(status_code=400, detail="Invalid X-Token header")
-    if item_id not in fake_db:
-        raise HTTPException(status_code=404, detail="Item not found")
-    return fake_db[item_id]
-
-
-@app.post("/items/", response_model=Item)
-async def create_item(item: Item, x_token: str = Header(...)):
-    if x_token != fake_secret_token:
-        raise HTTPException(status_code=400, detail="Invalid X-Token header")
-    if item.id in fake_db:
-        raise HTTPException(status_code=400, detail="Item already exists")
-    fake_db[item.id] = item
-    return item
+# class Dog:
+#     def __init__(self, name: str | None = None, age: int | None = None,
+#                  ishappy: bool | None = None):
+#         if name is not None and not isinstance(name, str):
+#             raise TypeError("Invalid type for 'name'. Expected 'str'.")
+#         self.name = name
+#         self.age = age
+#         self.isHappy = ishappy
+#         self.get_data()
+#
+#     def get_data(self):
+#         print(f"Name: {self.name}, Age: {self.age}, Happy: {self.isHappy}")
+#
+#
+# dog1 = Dog("Doggy", "gg34", 434)
+#
+# dog2 = Dog("Guffy", 23, True)
